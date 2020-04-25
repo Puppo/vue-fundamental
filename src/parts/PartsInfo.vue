@@ -8,10 +8,11 @@
 </template>
 
 <script>
-import parts from '../data/parts';
+import getPartsMixin from './get-parts.mixin';
 
 export default {
   name: 'PartInfo',
+  mixins: [getPartsMixin],
   props: {
     partType: {
       type: String,
@@ -24,7 +25,7 @@ export default {
   },
   computed: {
     part() {
-      return parts[this.partType].find((part) => part.id === +this.id);
+      return this.parts[this.partType].find((part) => part.id === +this.id);
     },
   },
 };
